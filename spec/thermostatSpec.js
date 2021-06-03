@@ -1,6 +1,6 @@
 'use strict'
 
-const Thermostat = require('../src/thermostat')
+const Thermostat = require('../lib/thermostat')
 
 describe('Thermostat', () => {
   let thermostat
