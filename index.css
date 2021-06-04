@@ -1,3 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 960px;
+  height: 100vh;
+  margin: auto;
+}
+
+#configuration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#temperature-configuration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .low-usage {
   color: green;
 }

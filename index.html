@@ -13,12 +13,21 @@
 
 <body>
   <section>
-    <p id="temperature"></p>
-    <p id="current-energy-usage"></p>
-    <p id="psm-status"></p>
-    <button id="temperature-up">+</button>
-    <button id="temperature-down">-</button>
-    <button id="temperature-reset">reset</button>
+    <form id="city-form">
+      <label for="city">City: </label>
+      <input type="text" name="city" id="city">
+      <button type="submit">Go</button>
+      <p>Current temperature: <span id="weather-temperature"></span> °C</p>
+    </form>
+  </section>
+  <section id="configuration">
+    <p>Temperature: <span id="temperature"></span> °C</p>
+    <div id="temperature-configuration">
+      <button id="temperature-up">+</button>
+      <button id="temperature-down">-</button>
+      <button id="temperature-reset">reset</button>
+    </div>
+    <p>PSM status: <span id="psm-status"></span></p>
     <button id="enable-psm">Enable PSM</button>
     <button id="disable-psm">Disable PSM</button>
   </section>
