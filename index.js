@@ -48,17 +48,31 @@
   // lib/app.js
   "use strict";
   var Thermostat = require_thermostat();
-  var thermostat = new Thermostat();
   var updateTemperature = () => {
     document.getElementById("temperature").innerHTML = thermostat.temperature;
     document.getElementById("temperature").className = thermostat.currentEnergyUsage;
-    document.getElementById("current-energy-usage").innerHTML = thermostat.currentEnergyUsage;
   };
   var updatePowerSavingModeStatus = () => {
-    document.getElementById("psm-status").innerHTML = thermostat.powerSavingModeEnabled;
+    document.getElementById("psm-status").innerHTML = thermostat.powerSavingModeEnabled ? "Enabled" : "Disabled";
   };
+  var updateWeatherTemperature = (city) => {
+    const url = new URL("https://api.openweathermap.org/data/2.5/weather");
+    const appid = "886e348b6cb5e51a855d47388dfcc474";
+    const params = { q: city, appid, units: "metric" };
+    url.search = new URLSearchParams(params).toString();
+    fetch(url).then((response) => response.json()).then((responseData) => {
+      document.getElementById("weather-temperature").innerHTML = responseData.main.temp;
+    });
+  };
+  var thermostat = new Thermostat();
   updateTemperature();
   updatePowerSavingModeStatus();
+  updateWeatherTemperature("London");
+  document.getElementById("city-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const city = event.target.elements.city.value;
+    updateWeatherTemperature(city);
+  });
   document.getElementById("temperature-up").addEventListener("click", () => {
     thermostat.up();
     updateTemperature();
