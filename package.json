@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "build": "esbuild lib/app.js --bundle --outfile=index.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,8 @@
     "eslint-plugin-promise": "^5.1.0",
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^7.0.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.12.6"
   }
 }
